@@ -41,3 +41,12 @@ process.on('unhandledRejection', err => {
     process.exit(1);
   });
 });
+
+// NOTE: HEROKU specific, to prevent abrupt termination during daily restart
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECEIVED, shutting down....');
+  // NOTE: always try to close the server before killing the process
+  server.close(() => {
+    console.log('Process terminated!');
+  });
+});
