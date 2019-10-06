@@ -59,7 +59,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
 
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+  // console.log(url);
   await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res);
@@ -207,7 +207,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
   // 1. get user based on Token
-  console.log('reset function');
+  // console.log('reset function');
   const hashedToken = crypto
     .createHash('sha256')
     .update(req.params.token)
