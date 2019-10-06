@@ -63,8 +63,8 @@ exports.webhookCheckout = (req, res, next) => {
     // req.body needs to be in raw form, not json
     event = stripe.webhooks.constructEvent(
       req.body,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET
+      signature
+      // process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
     return res.status(400).send('Webhook error: ', err.message);
