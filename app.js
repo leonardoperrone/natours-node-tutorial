@@ -27,10 +27,6 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// Serving static files
-// app.use(express.static(`${__dirname}/public`));
-app.use(express.static(path.join(__dirname, 'public')));
-
 // GLOBAL MIDDLEWARE
 // Implemente cors, Access-Control-Allow-Origin *
 app.use(cors());
@@ -43,6 +39,10 @@ app.use(cors());
 app.options('*', cors());
 // To allow cors on a specific path do the following
 // app.options('/api/v1/tours/:id', cors());
+
+// Serving static files
+// app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Set security HTTP headers
 app.use(helmet());
