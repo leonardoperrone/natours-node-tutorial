@@ -60,7 +60,7 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
-// NOTE: this post route is here because we need the raw request body, and we parse it to json a few lines below; so if we placed this in one of our route files we would get json and not raw which for strip webhooks wouldnt work
+// NOTE: this post route is here because we need the raw request body, and we parse it to json a few lines below; so if we placed this in one of our route files we would get json and not raw which for strip webhooks wouldnt
 app.post(
   '/webhook-checkout',
   express.raw({ type: 'application/json' }),
